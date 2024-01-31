@@ -14,16 +14,24 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v4
         with:
           instance: ${{ env.INSTANCE }}
           artifact: ${{ env.ARTIFACT }}
-          docker-version: ${{ env.DOCKER\_VERSION }}
+          docker-version: ${{ env.DOCKER_VERSION }}
 
       - name: Upload documentation
         uses: actions/upload-artifact@v3
@@ -39,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: algolia-indexes
-          path: artifacts/${{ env.ALGOLIA\_ARTIFACT }}
+          path: artifacts/${{ env.ALGOLIA_ARTIFACT }}
           retention-days: 7
 
   # Add the job below and artifacts/report.json on Upload documentation step above if you want to fail the
