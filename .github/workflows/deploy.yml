@@ -8,8 +8,8 @@ on:
 env:
   INSTANCE: ChatPython/id1
   ARTIFACT: webHelpID12-all.zip
-  DOCKER\_VERSION: 233.14272
-  ALGOLIA\_ARTIFACT: algolia-indexes-ID1.zip
+  DOCKER_VERSION: 233.14272
+  ALGOLIA_ARTIFACT: algolia-indexes-ID1.zip
 
 jobs:
   build:
