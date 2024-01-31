@@ -3,7 +3,7 @@ name: Build documentation
 on:
   push:
     branches: ["main"]
-  workflow\_dispatch:
+  workflow_dispatch:
 
 env:
   INSTANCE: ChatPython/id1
